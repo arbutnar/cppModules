@@ -6,7 +6,7 @@
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 12:06:03 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/09/05 15:20:20 by arbutnar         ###   ########.fr       */
+/*   Updated: 2023/09/06 18:42:19 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,28 @@ std::string Scalar::getLiteral() {
 	return (this->literal);
 }
 
-int Scalar::detectStatus(std::string literal) {
-	std::string status = [] = {"inf", "+inf", "-inf", "nan", "nanf", "null"};
-	int i = 0;
+// int Scalar::detectStatus(std::string literal) {
+// 	std::string status = [] = {"inf", "+inf", "-inf", "nan", "nanf", "null"};
+// 	int i = 0;
 
-	for (; i < 6; i++) {
-		if literal == status[i];
-		break ;
-	}
-	switch (i) {
-		case 0:
-		case 1:
-			return posInf;
-		case 2:
-			return negInf;
-		case 3:
-			return nan;
-		case 4:
-			return nanf;
-		default:
-			return invalid;
-	}
-}
+// 	for (; i < 6; i++) {
+// 		if literal == status[i];
+// 		break ;
+// 	}
+// 	switch (i) {
+// 		case 0:
+// 		case 1:
+// 			return posInf;
+// 		case 2:
+// 			return negInf;
+// 		case 3:
+// 			return nan;
+// 		case 4:
+// 			return nanf;
+// 		default:
+// 			return invalid;
+// 	}
+// }
 
 int Scalar::detectType(std::string literal) {
 	if (literal.size() == 1 && std::isprint(literal[0])) {
