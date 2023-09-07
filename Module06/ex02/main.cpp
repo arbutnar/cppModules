@@ -6,7 +6,7 @@
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:28:17 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/09/06 18:34:43 by arbutnar         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:33:00 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 class Base {
 	public:
-		virtual ~Base() {};
+		virtual ~Base( void ) {};
 };
 
 class A : public Base {
@@ -28,7 +28,7 @@ class B : public Base {
 class C : public Base {
 };
 
-Base *generate(void) {
+Base *generate( void ) {
 	srand(time(NULL));
 	std::string letter[3] = {"a", "b", "c"};
 	int i = rand() % 3;
@@ -42,7 +42,7 @@ Base *generate(void) {
 		return (NULL);
 }
 
-void identify(Base* p) {
+void identify( Base* p ) {
 	if (dynamic_cast<A*>(p))
 		std::cout << "Pointer type: A" << std::endl;
 	else if (dynamic_cast<B*>(p))
@@ -53,7 +53,7 @@ void identify(Base* p) {
 		std::cout << "Error" << std::endl;
 }
 
-void identify(Base& p) {
+void identify( Base& p ) {
 	try {
 		dynamic_cast<A&>(p);
 		std::cout << "Reference type: A" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:23:06 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/09/05 17:51:52 by arbutnar         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:32:23 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class Serializer {
 
 	public:
-		Serializer();
-		~Serializer();
-		uintptr_t serialize(Data* ptr);
-		Data* deserialize(uintptr_t raw);
+		Serializer( void );
+		~Serializer( void );
+		uintptr_t serialize( Data* ptr );
+		Data* deserialize( uintptr_t raw );
 };
