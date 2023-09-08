@@ -6,19 +6,11 @@
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:23:02 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/09/07 14:32:02 by arbutnar         ###   ########.fr       */
+/*   Updated: 2023/09/08 16:29:07 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
-
-Serializer::Serializer( void ) {
-
-}
-
-Serializer::~Serializer( void ) {
-
-}
 
 uintptr_t Serializer::serialize( Data* ptr ) {
     std::cout << "Pointer serialied!\n";
