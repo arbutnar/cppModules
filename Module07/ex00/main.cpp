@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/08 18:38:22 by arbutnar          #+#    #+#             */
+/*   Updated: 2023/09/08 18:38:22 by arbutnar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <string>
 
 template <typename T>
-void swap(T &a, T &b) {
+void swap( T &a, T &b ) {
 	T tmp;
 
 	tmp = a;
@@ -11,14 +23,14 @@ void swap(T &a, T &b) {
 }
 
 template <typename T>
-T min(T a, T b) {
+T min( T a, T b ) {
 	if (a < b)
 		return (a);
 	return (b);
 }
 
 template <typename T>
-T max(T a, T b) {
+T max( T a, T b ) {
 	if (a > b)
 		return (a);
 	return (b);
@@ -37,10 +49,12 @@ int main() {
 	std::string c = "chaine1";
 	std::string d = "chaine2";
 
-	::swap(c, d);
+	::swap( c, d );
 	std::cout << "c = " << c << ", d = " << d << std::endl;
 	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
 	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+	::swap( c, d );
+	std::cout << "c = " << c << ", d = " << d << std::endl;
 
 	return 0;
 }
