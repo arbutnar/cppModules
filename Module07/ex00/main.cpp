@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+# include <iostream>
+# include <string>
 
 template <typename T>
 void swap( T &a, T &b ) {

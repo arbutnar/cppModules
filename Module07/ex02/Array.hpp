@@ -53,9 +53,7 @@ class Array {
 		}
 		T &operator[]( int index ) const
 		{
-			if (elements[index] < 0)
-				throw std::runtime_error("Element at index is nullptr");
-			else if (index < 0 || index >= this->size)
+			if (index < 0 || index >= this->size)
 				throw std::out_of_range("Index out of bounds");
 			return (elements[index]);
 		}
