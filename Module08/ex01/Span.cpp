@@ -6,55 +6,54 @@
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:49:08 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/08/24 18:13:39 by arbutnar         ###   ########.fr       */
+/*   Updated: 2023/09/10 17:56:40 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include <cstdio>
 
-class Span::Overflow : public std::exception {
+class	Span::Overflow : public std::exception {
 	public:
 		virtual const char* what() const throw() { return ("Span overflow"); }
 };
 
-class Span::SpanNotFound : public std::exception {
+class	Span::SpanNotFound : public std::exception {
 	public:
 		virtual const char* what() const throw() { return ("Span not found - Error may be: zero or one nums stored "); }
 };
 
-Span::Span(unsigned int n)
+Span::Span( unsigned int n )
 	: N (n) {
 		std::cout << "Span one arg constructor called" << std::endl;
 }
 
-Span::Span(const Span &src) {
+Span::Span( const Span &src ) {
 	std::cout << "Span copy constructor called" << std::endl;
 	*this = src;
 }
 
-Span &Span::operator=(const Span &src) {
+Span	&Span::operator=( const Span &src ) {
 	std::cout << "Span copy assignment opeartor" << std::endl;
 	if (this != &src)  {
 		this->N = src.N;
 		this->v = src.v;
 	}
-	return (*this);
+	return *this;
 }
 
-Span::~Span() {
+Span::~Span( void ) {
 	std::cout << "Span deconstructor called" << std::endl;
 	v.clear();
 }
 
-void	Span::addNumber(int num) {
+void	Span::addNumber( int num ) {
 	if (size >= N)
 		throw Span::Overflow();
 	v.push_back(num);
 	size++;
 }
 
-void	Span::addMore(int num) {
+void	Span::addMore( int num ) {
 	std::vector<int> tmp;
 
 	srand(time(NULL));
@@ -66,7 +65,7 @@ void	Span::addMore(int num) {
 	v.insert(v.begin(), tmp.begin(), tmp.end());
 }
 
-int Span::shortestSpan() {
+int	Span::shortestSpan( void ) {
 	if (size < 2)
 		throw Span::SpanNotFound();
 	sort(v.begin(), v.end());
@@ -76,10 +75,10 @@ int Span::shortestSpan() {
 		if (ss > v[i] - v[i - 1])
 			ss = v[i] - v[i - 1];
 	}
-	return (ss);
+	return ss;
 }
 
-int	Span::longestSpan() {
+int	Span::longestSpan( void ) {
 	if (size < 2)
 		throw Span::SpanNotFound();
 	sort(v.begin(), v.end());
@@ -89,6 +88,6 @@ int	Span::longestSpan() {
 	return (max - min);
 }
 
-int		Span::getSize() {
-	return (size);
+int	Span::getSize( void ) {
+	return size;
 }

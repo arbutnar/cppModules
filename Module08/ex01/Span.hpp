@@ -6,16 +6,17 @@
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:49:02 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/08/24 18:13:48 by arbutnar         ###   ########.fr       */
+/*   Updated: 2023/09/10 17:54:49 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #pragma once
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <iterator>
+
+# include <iostream>
+# include <cstdio>
+# include <vector>
+# include <algorithm>
+# include <iterator>
 
 class Span {
 
@@ -28,15 +29,15 @@ class Span {
 		class Overflow;
 		class SpanNotFound;
 
-		Span(unsigned int N);
-		Span(const Span &src);
-		~Span();
+		Span( unsigned int N );
+		Span( const Span &src );
+		~Span( void );
 
-		Span &operator=(const Span &src);
+		Span &operator=( const Span &src );
 
-		void	addNumber(int num);
-		void	addMore(int num);
-		int		shortestSpan();
-		int		longestSpan();
-		int		getSize();
+		void	addNumber( int num );
+		void	addMore( int num );
+		int		shortestSpan( void );
+		int		longestSpan( void );
+		int		getSize( void );
 };

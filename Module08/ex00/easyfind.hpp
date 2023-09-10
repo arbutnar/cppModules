@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/10 17:57:16 by arbutnar          #+#    #+#             */
+/*   Updated: 2023/09/10 17:57:28 by arbutnar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
-#include <iostream>
-#include <vector>
-#include <algorithm>
+
+# include <iostream>
+# include <vector>
+# include <algorithm>
 
 class EasyFind {
 
@@ -13,4 +26,4 @@ class EasyFind {
 };
 
 template <typename T>
-void	easyfind(T container, int i);
+void	easyfind( T container, int i );

@@ -6,12 +6,11 @@
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:39:33 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/08/27 17:07:37 by arbutnar         ###   ########.fr       */
+/*   Updated: 2023/09/10 17:57:40 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
-#include <list>
 
 int	main()
 {
