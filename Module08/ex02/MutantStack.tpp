@@ -6,7 +6,7 @@
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:39:21 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/09/10 17:59:33 by arbutnar         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:52:16 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ MutantStack<T>::MutantStack( MutantStack const & src ) {
 }
 
 template <typename T>
-MutantStack<T>	&MutantStack<T>::operator=( MutantStack const & rhs ) {
-	(void)rhs;
+MutantStack<T>	&MutantStack<T>::operator=( MutantStack const & src ) {
+	if (this != &src)
+		return *this;
 	return *this;
 }
 

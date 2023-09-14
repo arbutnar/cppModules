@@ -6,7 +6,7 @@
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:39:33 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/09/10 17:57:40 by arbutnar         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:56:24 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	main()
 {
-	std::cout << std::endl << "--Testing with MUTANTSTACK--" << std::endl;
+	std::cout << "--Testing with MUTANTSTACK--" << std::endl << std::endl;
 	MutantStack<int>	mstack;
 
 	mstack.push(5);
 	mstack.push(17);
-	std::cout << mstack.top() << std::endl;
+	std::cout << "last inserted in stack: " << mstack.top() << std::endl;
 	mstack.pop();
-	std::cout << mstack.size() << std::endl;
+	std::cout << "size of stack: " << mstack.size() << std::endl;
 	mstack.push(3);
 	mstack.push(5);
 	mstack.push(737);
@@ -37,14 +37,14 @@ int	main()
 	}
 	std::stack<int> s(mstack);
 
-	std::cout << "--Testing with LIST--" << std::endl;
+	std::cout << "--Testing with LIST--" << std::endl << std::endl;
 	std::list<int>	test;
 
 	test.push_front(5);
 	test.push_front(17);
-	std::cout << test.front() << std::endl;
+	std::cout << "last inserted in stack: " << test.front() << std::endl;
 	test.pop_front();
-	std::cout << test.size() << std::endl;
+	std::cout << "size of stack: " << test.size() << std::endl;
 	test.push_back(3);
 	test.push_back(5);
 	test.push_back(737);

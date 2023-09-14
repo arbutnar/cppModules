@@ -6,7 +6,7 @@
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 22:49:08 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/09/10 17:56:40 by arbutnar         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:44:18 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int	Span::longestSpan( void ) {
 	sort(v.begin(), v.end());
 	int min = *std::min_element(v.begin(), v.end());
 	int max = *std::max_element(v.begin(), v.end());
-	
 	return (max - min);
 }
 
