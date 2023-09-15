@@ -6,7 +6,7 @@
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:18:09 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/09/14 19:22:29 by arbutnar         ###   ########.fr       */
+/*   Updated: 2023/09/15 18:28:22 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,25 +77,18 @@ int RPN::solve( std::string exp ) {
 	std::vector<std::string> vec;
 	std::stringstream ss(exp);
 	std::string str;
-	char	*pEnd();
 	while (std::getline(ss, str, ' '))
 		vec.push_back(str);
-	std::cout << "vector: ";
 	for (unsigned int i = 0; i < vec.size(); i++) {
-		int num;
-		num = atoi(vec[i].c_str());
-		_temp.push(num);
-		
-		std::cout << vec[i] << " ";
+		if (vec[i].find_first_not_of("0123456789") != std::string::npos) {
+			if (vec[i].size() != 1)
+				throw std::invalid_argument("Error");
+			else
+				perform_operation(_temp, vec[i][0]);
+		}
+		else
+			_temp.push(atoi(vec[i].c_str()));
 	}
-	std::cout << std::endl;
-	// for (unsigned int i = 0; i != exp.length(); i++)
-	// {
-	// 	if (std::isdigit(exp[i]))
-	// 		_temp.push( static_cast<int>(exp[i] - 48) );
-	// 	else
-	// 		perform_operation(_temp, exp[i]);
-	// }
 	while (!_temp.empty()) {
 		std::cout << _temp.top() << std::endl;
 		_temp.pop();
