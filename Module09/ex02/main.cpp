@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 14:53:42 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/09/15 19:12:07 by arbutnar         ###   ########.fr       */
+/*   Created: 2023/09/17 13:29:56 by arbutnar          #+#    #+#             */
+/*   Updated: 2023/09/17 20:07:55 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,23 @@
 
 int main( int argc, char **argv ) {
 
-    try {
-        if (argc < 3)
-            throw std::invalid_argument("Invalid Argument");
+	try {
+		if (argc < 3)
+			throw std::invalid_argument("Invalid argument");
 
-        PmergeMe p(argv);
-	    std::cout << "Before: ";
-        p.display();
-        std::cout << "After: ";
-        p.display();
-        
-    } catch( const std::exception &e ) {
-        std::cout << e.what() << std::endl;
-    }
-    return 0;
+		PmergeMe	pme(argv);
+
+		std::cout << "Before: ";
+		pme.display();
+		std::cout << "After: ";
+		pme.sortContainers();
+		pme.display();
+
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << pme.getVecTime() << std::endl;
+		std::cout << "Time to process a range of " << argc - 1 << " Elements with std::vector : " << pme.getDeqTime() << std::endl;
+	} catch( std::exception &e ){
+		std::cout << e.what() << std::endl;
+	}
+
+	return 0;
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 12:23:49 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/09/15 18:28:27 by arbutnar         ###   ########.fr       */
+/*   Created: 2023/09/17 13:33:05 by arbutnar          #+#    #+#             */
+/*   Updated: 2023/09/17 15:40:07 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 # include <iostream>
 # include <sstream>
-# include <stdlib.h>
+# include <string>
 # include <cstdlib>
-# include <vector>
 # include <stack>
+# include <queue>
 
 class RPN {
 
-	private:
-		std::stack<int> _temp;
+    private:
+        std::stack<int> _executorStack;
 
-	public:
-		RPN( void );
-		RPN( const char* exp );
-		~RPN();
-		RPN( const RPN &src );
-		RPN& operator=( const RPN &src );
+    public:
+        RPN( void );
+        RPN( char *str );
+        RPN( const RPN &src );
+        RPN& operator=( const RPN &src );
+        ~RPN();
 
-		int	solve( std::string exp );
-		void perform_operation( std::stack<int> &s, char c );
+        int	    solve( std::string exp );
+        void    performOperation( std::stack<int> &stack, std::string c );
 
-		class errorException : public std::exception {
-			public:
-				virtual const char* what() const throw() { return("Error"); }
-		};
+        class errorException : public std::exception {
+            virtual const char* what() const throw() { return("Error occured in operation"); };
+        };
 };

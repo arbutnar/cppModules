@@ -5,93 +5,92 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arbutnar <arbutnar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 13:18:09 by arbutnar          #+#    #+#             */
-/*   Updated: 2023/09/15 18:28:22 by arbutnar         ###   ########.fr       */
+/*   Created: 2023/09/17 13:49:53 by arbutnar          #+#    #+#             */
+/*   Updated: 2023/09/17 15:43:02 by arbutnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
 RPN::RPN( void ) {
-	throw std::invalid_argument("Invalid Argument");
+	throw std::invalid_argument("Error");
 }
 
-RPN::RPN( const char* exp ) {
-	std::string str = static_cast<std::string>(exp);
-	if (solve(str))
-		throw RPN::errorException();
+RPN::RPN( char* arg ) {
+	std::string exp = static_cast<std::string>(arg);
+	if (!solve( exp ))
+		throw std::invalid_argument("Error");
+}
+
+RPN::RPN( const RPN &src )
+	: _executorStack (src._executorStack) {
+}
+
+RPN& RPN::operator=( const RPN &src ) {
+	if (this != &src)
+		this->_executorStack = src._executorStack;
+	return (*this);
 }
 
 RPN::~RPN() {
-
 }
 
-RPN::RPN( const RPN &src ) {
-	*this = src;
-}
+void    RPN::performOperation( std::stack<int> &stack, std::string c ) {
+	int i = 0;
+	int res = 0;
+	std::string	signs[4] = { "+", "-", "/", "*" };
+	int n1 = stack.top();
+	stack.pop();
+	int n2 = stack.top();
+	stack.pop();
 
-RPN &RPN::operator=( const RPN &src ) {
-	(void)src;
-	return *this;
-}
-
-void RPN::perform_operation( std::stack<int> &_temp, char c )
-{
-	char signs[4] = {'+', '-', '*', '/'};
-	int first;
-	int sec;
-	int res;
-	first = _temp.top();
-	_temp.pop();
-	sec = _temp.top();
-	_temp.pop();
-	unsigned int i;
-	for (i = 0; i < 4; i++)
-		if (c == signs[i])
+	for (; i < 4; i++)
+		if (signs[i] == c)
 			break ;
-	switch(i) {
+	switch (i) {
 		case 0:
-			res = sec + first;
-			break ;
+			res = n2 + n1; break ;
 		case 1:
-			res = sec - first;
-			break ;
+			res = n2 - n1; break ;
 		case 2:
-			res = sec * first;
-			break ;
+			res = n2 / n1; break ;
 		case 3:
-			res = sec / first;
-			break ;
+			res = n2 * n1; break ;
 		default:
 			return ;
 	}
-	_temp.push(res);
-	if (_temp.size() < 1)
+	stack.push(res);
+	if (stack.size() < 1)
 		throw RPN::errorException();
 }
 
-int RPN::solve( std::string exp ) {
+int	RPN::solve( std::string exp ) {
 	if (exp.find_first_not_of("0123456789+-/* ") != std::string::npos)
-		return 1;
-	
-	std::vector<std::string> vec;
+		return 0;
+
 	std::stringstream ss(exp);
-	std::string str;
-	while (std::getline(ss, str, ' '))
-		vec.push_back(str);
-	for (unsigned int i = 0; i < vec.size(); i++) {
-		if (vec[i].find_first_not_of("0123456789") != std::string::npos) {
-			if (vec[i].size() != 1)
-				throw std::invalid_argument("Error");
+	std::string line;
+	std::queue<std::string> queue;
+	while (std::getline(ss, line, ' '))
+		queue.push(line);
+	while (!queue.empty())
+	{
+		if (queue.front().find_first_not_of("0123456789") != std::string::npos)
+		{
+			if (queue.front().size() != 1)
+				return 0;
 			else
-				perform_operation(_temp, vec[i][0]);
-		}
-		else
-			_temp.push(atoi(vec[i].c_str()));
+				performOperation( _executorStack, queue.front() );
+		} else
+			_executorStack.push(std::atoi( queue.front().c_str()) );
+		queue.pop();
 	}
-	while (!_temp.empty()) {
-		std::cout << _temp.top() << std::endl;
-		_temp.pop();
+
+	while (!_executorStack.empty())
+	{
+		std::cout << _executorStack.top() << std::endl;
+		_executorStack.pop();
 	}
-	return 0;
+
+	return 1;
 }
