@@ -5,7 +5,7 @@ FLG = -Wextra -Wall -Werror -std=c++98
 
 $(NAME): $(SRC)
 	mkdir -p obj
-	c++ $(SRC) -c
+	c++ $(SRC) $(FLG) -c
 	c++ $(OBJ) -o $(NAME)
 	mv *.o obj
 
