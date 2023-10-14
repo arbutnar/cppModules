@@ -11,27 +11,20 @@ const std::string Intern::forms[3] = {
 		"PresidentialPardonForm"
 };
 
-Intern::Intern() {
-	//std::cout << "Default Intern contructed" << std::endl;
-}
-
-Intern::Intern(const Intern &src) {
-	//std::cout << "Copy of Interrn contructed" << std::endl;
+Intern::Intern( const Intern &src ) {
 	*this = src;
 }
 
-Intern &Intern::operator=(const Intern &src) {
-	//std::cout << "Copy assignment operator" << std::endl;
+Intern &Intern::operator=( const Intern &src ) {
 	if (this == &src)
 		return (*this);
 	return (*this);
 }
 
-Intern::~Intern() {
-	//std::cout << "Intern deconstructed" << std::endl;	
+Intern::~Intern( void ) {
 }
 
-AForm *Intern::makeForm(std::string name, std::string target) {
+AForm *Intern::makeForm( std::string name, std::string target ) {
 	int idx;
 
 	for(idx = 0; idx < 3; idx++) {
