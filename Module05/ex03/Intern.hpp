@@ -7,16 +7,15 @@
 enum FormNames { Shrubbery, Robotomy, Presidential };
 
 class Intern {
-
 	private:
-		static const std::string forms[3] ;
+		static const	std::string forms[3] ;
 	public:
 		class CannotMakeForm;
 
-		Intern();
-		Intern(const Intern &src);
-		Intern &operator=(const Intern &src);
-		~Intern();
+		Intern( void );
+		Intern( const Intern &src );
+		Intern &operator=( const Intern &src );
+		~Intern( void );
 
-		AForm *makeForm(std::string name, std::string target);
+		AForm *makeForm( std::string name, std::string target );
 };
