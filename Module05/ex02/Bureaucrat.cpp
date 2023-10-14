@@ -10,7 +10,7 @@ class Bureaucrat::GradeTooHighException : public std::exception {
         virtual const char* what() const throw() { return ("\033[1;31mGrade too high\033[0m"); }
 };
 
-Bureaucrat::Bureaucrat(std::string name, int grade)
+Bureaucrat::Bureaucrat( std::string name, int grade )
     : name (name), grade (grade) {
     if (this->grade < 1)
         throw Bureaucrat::GradeTooHighException();
@@ -18,30 +18,29 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
         throw Bureaucrat::GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &src) {
+Bureaucrat::Bureaucrat( const Bureaucrat &src ) {
     *this = src;
 }
 
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src) {
+Bureaucrat &Bureaucrat::operator=( const Bureaucrat &src ) {
     if (this == &src)
         return (*this);
     this->grade = src.grade;
     return (*this);
 }
 
-Bureaucrat::~Bureaucrat() {
-
+Bureaucrat::~Bureaucrat( void ) {
 }
 
-std::string Bureaucrat::getName() const {
+std::string Bureaucrat::getName( void ) const {
     return (this->name);
 }
 
-int Bureaucrat::getGrade() const {
+int Bureaucrat::getGrade( void ) const {
     return (this->grade);
 }
 
-void Bureaucrat::incrementGrade(int amount) {
+void Bureaucrat::incrementGrade( int amount ) {
     for (int i = 0; i < amount; i++) {
         if (this->grade - 1 < 1)
             throw Bureaucrat::GradeTooHighException();
@@ -50,7 +49,7 @@ void Bureaucrat::incrementGrade(int amount) {
     std::cout << "Bureaucrat upgraded at " << this->grade << std::endl;
 }
 
-void Bureaucrat::decrementGrade(int amount) {
+void Bureaucrat::decrementGrade( int amount ) {
     for (int i = 0; i < amount; i++) {
         if (this->grade + 1 > 150)
             throw Bureaucrat::GradeTooLowException();
@@ -59,7 +58,7 @@ void Bureaucrat::decrementGrade(int amount) {
     std::cout << "Bureaucrat downgraded at " << this->grade << std::endl;
 }
 
-void    Bureaucrat::signForm(AForm &form) {
+void    Bureaucrat::signForm( AForm &form ) {
     if (this->getGrade() <= form.getSignGrade()) {
         form.setIsSigned(true);
         std::cout << this->getName() << " signed " << form.getName() << std::endl;
@@ -69,7 +68,7 @@ void    Bureaucrat::signForm(AForm &form) {
     }
 }
 
-void    Bureaucrat::executeForm(AForm const &form) {
+void    Bureaucrat::executeForm( AForm const &form ) {
     if (this->getGrade() <= form.getExecGrade()) {
         std::cout << this->getName() << " executed " << form.getName() << std::endl;
         form.execute(*this);
@@ -80,7 +79,7 @@ void    Bureaucrat::executeForm(AForm const &form) {
     }
 }
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat &b) {
+std::ostream &operator<<( std::ostream &os, Bureaucrat &b ) {
 	os << b.getName() << ", bureaucrat grade " << b.getGrade() << ".\n";
 	return (os);
 }
