@@ -22,16 +22,16 @@ std::string ShrubberyCreationForm::asciiTree =
         "			..@@:'.			\n"
         "			..:@(@):.      	\n";
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
+ShrubberyCreationForm::ShrubberyCreationForm( std::string target )
 	: AForm("ShrubberyCreationForm", 145, 137), target (target) {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src)
+ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm &src )
     : AForm(src.name, src.signGrade, src.execGrade) {
     *this = src;
 }
 
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &src) {
+ShrubberyCreationForm &ShrubberyCreationForm::operator=( const ShrubberyCreationForm &src ) {
     if (this != &src) {
         this->target = src.target;
 		this->asciiTree = src.asciiTree;
@@ -39,14 +39,14 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return (*this);
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {
+ShrubberyCreationForm::~ShrubberyCreationForm( void ) {
 }
 
-std::string ShrubberyCreationForm::getTarget() {
+std::string ShrubberyCreationForm::getTarget( void ) {
 	return (this->target);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
+void ShrubberyCreationForm::execute( Bureaucrat const &executor ) const {
     AForm::execute(executor);
     try {
         writeFile();
@@ -56,7 +56,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
     }
 }
 
-void ShrubberyCreationForm::writeFile() const {
+void ShrubberyCreationForm::writeFile( void ) const {
     std::ofstream outFile;
     std::string filename = target + "_shrubbery";
 	outFile.open(filename.c_str());
