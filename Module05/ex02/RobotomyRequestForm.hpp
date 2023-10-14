@@ -4,19 +4,17 @@
 #include "AForm.hpp"
 
 class RobotomyRequestForm: public AForm {
-
 	private:
-		std::string target;
-
+		std::string	target;
 	public:
 		class RobotomyFailure;
 
-		RobotomyRequestForm(std::string target);
-		RobotomyRequestForm(const RobotomyRequestForm &src);
-        RobotomyRequestForm &operator=(const RobotomyRequestForm &src);
-		~RobotomyRequestForm();
+		RobotomyRequestForm( std::string target );
+		RobotomyRequestForm( const RobotomyRequestForm &src );
+        	RobotomyRequestForm &operator=( const RobotomyRequestForm &src );
+		~RobotomyRequestForm( void );
 
-		std::string getTarget();
-		void robotomize() const;
-		void execute(Bureaucrat const &executor) const;
+		std::string getTarget( void );
+		void robotomize( void ) const;
+		void execute( Bureaucrat const &executor ) const;
 };
