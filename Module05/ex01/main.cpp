@@ -1,10 +1,9 @@
 #include "Bureaucrat.hpp"
 
 int main() {
-
     try {
-        Bureaucrat balbio("Ash", 2);
-        Form form("sheet", 10, 5);
+        Bureaucrat    balbio("Ash", 2);
+        Form          form("sheet", 10, 5);
         std::cout << std::boolalpha << form << "\n";
 
         try {
