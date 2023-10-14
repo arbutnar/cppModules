@@ -38,8 +38,6 @@ Base *generate( void ) {
 		return (new B);
 	else if (letter[i] == "c")
 		return (new C);
-	else
-		return (NULL);
 }
 
 void identify( Base* p ) {
@@ -49,8 +47,6 @@ void identify( Base* p ) {
 		std::cout << "Pointer type: B" << std::endl;
 	else if (dynamic_cast<C*>(p))
 		std::cout << "Pointer type: C" << std::endl;
-	else
-		std::cout << "Error" << std::endl;
 }
 
 void identify( Base& p ) {
