@@ -11,6 +11,9 @@ const std::string Intern::forms[3] = {
 		"PresidentialPardonForm"
 };
 
+Intern::Intern( void ) {
+}
+
 Intern::Intern( const Intern &src ) {
 	*this = src;
 }
