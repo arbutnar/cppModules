@@ -1,29 +1,28 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target)
+PresidentialPardonForm::PresidentialPardonForm( std::string target )
 	: AForm ("PresidentialPradonForm", 25, 5), target (target) {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src)
+PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm &src )
     : AForm(src.name, src.signGrade, src.execGrade) {
     *this = src;
 }
 
-PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &src) {
+PresidentialPardonForm &PresidentialPardonForm::operator=( const PresidentialPardonForm &src ) {
     if (this != &src)
         this->target = src.target;
     return (*this);
 }
 
-PresidentialPardonForm::~PresidentialPardonForm() {
-
+PresidentialPardonForm::~PresidentialPardonForm( void ) {
 }
 
-std::string PresidentialPardonForm::getTarget() {
+std::string PresidentialPardonForm::getTarget( void ) {
 	return (this->target);
 }
 
-void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
+void PresidentialPardonForm::execute( Bureaucrat const &executor ) const {
 	AForm::execute(executor);
 	try {
 		Zaphod();
@@ -32,6 +31,6 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
 	}
 }
 
-void PresidentialPardonForm::Zaphod() const {
+void PresidentialPardonForm::Zaphod( void ) const {
 	std::cout << this->target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
