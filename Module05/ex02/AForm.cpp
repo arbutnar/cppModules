@@ -15,11 +15,11 @@ class AForm::notSigned : public std::exception {
 		virtual const char* what() const throw() { return ("\033[1;31mForm not signed\033[0m"); }
 };
 
-AForm::AForm()
+AForm::AForm( void )
 	: name ("Unnamed"), isSigned (false), signGrade(0), execGrade(0) {
 }
 
-AForm::AForm (std::string n, int gts, int gte)
+AForm::AForm ( std::string n, int gts, int gte )
 	: name (n), isSigned (false), signGrade(gts), execGrade(gte) {
 	if (this->signGrade < 1 || this->execGrade < 1)
         throw AForm::GradeTooHighException();
@@ -27,42 +27,42 @@ AForm::AForm (std::string n, int gts, int gte)
         throw AForm::GradeTooLowException();
 }
 
-AForm::AForm(const AForm &src)
+AForm::AForm( const AForm &src )
 	: name (src.name), isSigned (src.isSigned), signGrade(src.signGrade), execGrade(src.execGrade) {
 	*this = src;
 }
 
-AForm &AForm::operator=(const AForm &src) {
+AForm &AForm::operator=( const AForm &src ) {
 	if (this == &src)
 		return (*this);
 	return (*this);
 }
 
-AForm::~AForm() {
+AForm::~AForm( void ) {
 }
 
-std::string AForm::getName() const {
+std::string AForm::getName( void ) const {
 	return (this->name);
 }
 
-bool AForm::getIsSigned() const {
+bool AForm::getIsSigned( void ) const {
 	return (this->isSigned);
 }
 
-void AForm::setIsSigned(bool state) {
+void AForm::setIsSigned( bool state ) {
 	this->isSigned = state;
 }
 
 
-int AForm::getSignGrade() const {
+int AForm::getSignGrade( void ) const {
 	return (this->signGrade);
 }
 
-int AForm::getExecGrade() const {
+int AForm::getExecGrade( void ) const {
 	return (this->execGrade);
 }
 
-void AForm::beSigned(Bureaucrat *b) {
+void AForm::beSigned( Bureaucrat *b ) {
 	std::cout << "AFORM PROSPECTIVE: Requested grade to sign AForm: " << this->getSignGrade() << std::endl;
 	if (b->getGrade() <= this->getSignGrade()) {
 		this->isSigned = true;
@@ -75,7 +75,7 @@ void AForm::beSigned(Bureaucrat *b) {
 	}
 }
 
-void AForm::execute(Bureaucrat const &executor) const {
+void AForm::execute( Bureaucrat const &executor ) const {
 	if (!this->isSigned)
 		throw AForm::notSigned();
 	else if (executor.getGrade() > this->getExecGrade()) {
@@ -84,7 +84,7 @@ void AForm::execute(Bureaucrat const &executor) const {
 	}
 }
 
-std::ostream &operator<<(std::ostream &os, AForm &f) {
+std::ostream &operator<<( std::ostream &os, AForm &f ) {
 	os << "AForm name: " << f.getName() << ".\nsigned state: " << f.getIsSigned() << ".\ngrade required to sign: " << f.getSignGrade() << ".\ngrade required to execute: " << f.getExecGrade() << ".\n";
 	return (os);
 }
